@@ -1,0 +1,33 @@
+{
+  "name": "table-auto-scroll",
+  "version": "0.0.0",
+  "description": "A program shows table auto scroll with header fixed or not",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest",
+    "serve": "parcel servce src/*.pug",
+    "build": "parcel build src/*.pug",
+    "build:releases": "parcel build src/*.pug && (mkdir -p releases) && ((zip -r releases/dist.zip dist) & (tar zcvf releases/dist.tar.gz dist))"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codinggirl/table-auto-scroll.git"
+  },
+  "keywords": [
+    "table",
+    "auto-scroll"
+  ],
+  "author": "Richard Libre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codinggirl/table-auto-scroll/issues"
+  },
+  "homepage": "https://github.com/codinggirl/table-auto-scroll#readme",
+  "devDependencies": {
+    "jest": "^24.1.0",
+    "parcel": "^1.11.0",
+    "pug": "^2.0.3"
+  }
+}
