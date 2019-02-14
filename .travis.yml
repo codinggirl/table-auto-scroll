@@ -1,8 +1,8 @@
 sudo: false
 language: node_js
 node_js:
-  - 8
   - 10
+  - 8
 cache:
   - npm
   - yarn
@@ -11,13 +11,19 @@ cache:
 script:
 - npm run build
 - npm run build:releases
-deploy:
-- provider: releases
-  api_key:
-    secure: DTJg4KudVnLHukWn4CRgyU51Grbupw4Ej7QdRXNeLnfizrlB09hhkdPNtkobxtFmIpAHEBlDo2QjzkK22bSQcnedjzWMacjAf0uFQuxXXdttNWOcDYM4U5Yc83szrEq2WGT0DSAryNpXVyk0fQGywQJYl9jOdKTW96M6PnHCzByA3c7TZmeTLHJR8UEKcYx+aOE2NE9E13yiKKmIlbRD2Keh6CaECJsQzVIGpUjJS6zOaM3zeRJ8nS16+EyFj/hIN8W3wMSoHgrHi092YrTo+Md7gO0T/4zkA/F58v++fyLqQMWI5xDfB5cPYh+iimEqnfWT0eiKJWcpQrWybL5G6W5LSlj1Qof7Jee5mbHNDHW9djuo1EkA7Jm2k5nGde5amyVP7uGPDiJZTEqTSrn6GzI6PllTA6QS7n8m/Gc1rGKd7/pC7LenEdv5Zp9j6cdbXMriqUVKVYsG9lKq591YyJIy2EKgwV9m25zr2dXDY/1/jibePueJHG1DtNcHcwjEZxrA62PXJZDvjwfGelF0ihlUcru03bC1YMct9Y2oalQb9OhNpLI+eKj61k8jtgcWTVdOMCryzBzwrmsPLWPP9Iosubi3eACBfXs7DUkgRjKAfezOU+52YNJ3W2nzwAzVeMFp6Nm+s1OIJcg266bGhLJwL5U5WiJ083XmS/9gL1w=
-  file:
-  - releases/dist.zip
-  - releases/dist.tar.gz
-  skip_cleanup: true
-  on:
-    tags: true
+jobs:
+  include:
+    - script:
+    - stage: GitHub Release
+      node_js: 10
+      script: echo "deploying to GitHub Release ..."
+      deploy:
+      - provider: releases
+        api_key:
+          secure: DTJg4KudVnLHukWn4CRgyU51Grbupw4Ej7QdRXNeLnfizrlB09hhkdPNtkobxtFmIpAHEBlDo2QjzkK22bSQcnedjzWMacjAf0uFQuxXXdttNWOcDYM4U5Yc83szrEq2WGT0DSAryNpXVyk0fQGywQJYl9jOdKTW96M6PnHCzByA3c7TZmeTLHJR8UEKcYx+aOE2NE9E13yiKKmIlbRD2Keh6CaECJsQzVIGpUjJS6zOaM3zeRJ8nS16+EyFj/hIN8W3wMSoHgrHi092YrTo+Md7gO0T/4zkA/F58v++fyLqQMWI5xDfB5cPYh+iimEqnfWT0eiKJWcpQrWybL5G6W5LSlj1Qof7Jee5mbHNDHW9djuo1EkA7Jm2k5nGde5amyVP7uGPDiJZTEqTSrn6GzI6PllTA6QS7n8m/Gc1rGKd7/pC7LenEdv5Zp9j6cdbXMriqUVKVYsG9lKq591YyJIy2EKgwV9m25zr2dXDY/1/jibePueJHG1DtNcHcwjEZxrA62PXJZDvjwfGelF0ihlUcru03bC1YMct9Y2oalQb9OhNpLI+eKj61k8jtgcWTVdOMCryzBzwrmsPLWPP9Iosubi3eACBfXs7DUkgRjKAfezOU+52YNJ3W2nzwAzVeMFp6Nm+s1OIJcg266bGhLJwL5U5WiJ083XmS/9gL1w=
+        file:
+        - releases/dist.zip
+        - releases/dist.tar.gz
+        skip_cleanup: true
+        on:
+          tags: true
