@@ -1,5 +1,7 @@
 # table-auto-scroll
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/codinggirl/table-auto-scroll.svg)](https://greenkeeper.io/)
+
 A demo for Table Auto Scroll.
 
 ## How to use
